@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body class="main-layout" onload="init()">
+    <header class="main-header-con flex space-between align-center">
+        <div class="logo">logo</div>
+        <nav class="main-nav">
+            <ul class="main-nav-list flex align-center clean-list">
+                <li><a href="">Gallery</a></li>
+                <li><a href="">Memes</a></li>
+                <li><a href="">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="gallery-container">
+        <!-- <img src="meme-imgs (square)/1.jpg" alt="">
+        <img src="meme-imgs (square)/2.jpg" alt="">
+        <img src="meme-imgs (square)/3.jpg" alt="">
+        <img src="meme-imgs (square)/4.jpg" alt="">
+        <img src="meme-imgs (square)/5.jpg" alt="">
+        <img src="meme-imgs (square)/6.jpg" alt="">
+        <img src="meme-imgs (square)/7.jpg" alt="">
+        <img src="meme-imgs (square)/8.jpg" alt="">
+        <img src="meme-imgs (square)/9.jpg" alt="">
+        <img src="meme-imgs (square)/10.jpg" alt="">
+        <img src="meme-imgs (square)/11.jpg" alt="">
+        <img src="meme-imgs (square)/12.jpg" alt="">
+        <img src="meme-imgs (square)/13.jpg" alt="">
+        <img src="meme-imgs (square)/14.jpg" alt="">
+        <img src="meme-imgs (square)/15.jpg" alt="">
+        <img src="meme-imgs (square)/16.jpg" alt="">
+        <img src="meme-imgs (square)/17.jpg" alt="">
+        <img src="meme-imgs (square)/18.jpg" alt=""> -->
+    </section>
+
+    <div class="canvas-container">
+        <!-- <label for="fname">First name:</label> -->
+        <input oninput="setLineTxt(this)" type="text" id="fname" name="fname" placeholder="Enter your text here">
+        <h3>Container</h3>
+        <canvas id="my-canvas" height="450" width="450"></canvas>
+    </div>
+
+    <script src="js/services/service.utils.js"></script>
+    <script src="js/services/meme.service.js"></script>
+    <script src="js/meme.controller.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

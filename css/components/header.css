@@ -1,0 +1,9 @@
+.main-header-con{
+    margin-bottom: 1.5rem;
+}
+
+
+.main-header-con .main-nav-list a{
+    padding-inline-end: 10px;
+    /* padding-right: 10px; */
+}
