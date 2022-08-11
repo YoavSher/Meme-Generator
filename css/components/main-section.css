@@ -27,7 +27,7 @@
 }
 
 [name=search-bar] {
-    min-width: 27em;
+    min-width: 18em;
     height: 3em;
     background-color: var(--clr3);
     color: #ffffff;
@@ -36,7 +36,7 @@
     appearance: none;
     outline: none;
     font-size: 1em;
-    margin-inline-start: 25px;
+    /* margin-inline-start: 25px; */
     margin-top: 25px;
     padding-inline-start: 2.5em;
     padding-top: 1em;
@@ -46,7 +46,7 @@
 .search-form .search-btn {
     position: absolute;
     top: 40px;
-    left: 510px;
+    left: 300px;
     height: 20px;
     width: 20px;
     padding: 0;

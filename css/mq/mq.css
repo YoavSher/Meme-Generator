@@ -1,3 +1,53 @@
+@media(max-width:900px) {
+    .main-nav-list {
+        position: fixed;
+        top: 0;
+        right: 0;
+        flex-direction: column;
+        height: 100vh;
+        background-color: #5970c187;
+        background-image: linear-gradient(-86deg, #33be6d7d 0%, #0c98b980 100%);
+        /* box-shadow: -1px -1px 14px 0px #000000c4; */
+        min-width: 150px;
+        transform: translateX(100%);
+        transition: transform 0.6s;
+        z-index: 25;
+
+
+    }
+
+    .main-nav-list>li {
+        margin-top: 20px;
+    }
+
+    .menu-btn {
+        border: none;
+        background-color: #33be6d;
+        height: 66px;
+        border-radius: 50%;
+    }
+
+    body.menu-open .main-nav-list {
+
+        box-shadow: -1px -1px 14px 0px #000000c4;
+
+        transform: translateX(0);
+
+    }
+
+    body.menu-open .main-screen {
+        display: block;
+    }
+}
+
+
+
+
+
+
+
+
+
 @media(min-width:900px) {
     /* .main-layout {
         max-width: var(--wide);
@@ -14,12 +64,12 @@
         /* padding-right: 10px; */
     }
 
-    .main-nav-list li * {
-        color: #fefefe;
-    }
-
     .main-header-con .main-nav-list:last-child {
         padding-inline-end: 200px;
+    }
+
+    .menu-btn {
+        display: none;
     }
 
     .main-section {
@@ -40,6 +90,15 @@
 
     .search-form {
         margin-bottom: 0px;
+    }
+
+    [name=search-bar] {
+        min-width: 27em;
+        margin-inline-start: 25px;
+    }
+
+    .search-form .search-btn {
+        left: 510px;
     }
 
     .gallery {
@@ -79,13 +138,53 @@
         background-color: #22252c;
         background-image: linear-gradient(-86deg, #33be6d 0%, #0c98b9 100%);
     }
+
     .meme-container {
         justify-content: space-between;
         flex-direction: row-reverse;
         align-items: center;
+        max-width: 1245px;
     }
+
     .meme-container .user-acts {
         /* flex-basis: 50%; */
         margin-inline-end: 95px;
+    }
+
+    .canvas-container #my-canvas {
+        width: 476px;
+        height: 546px;
+    }
+
+    .meme-container .user-acts {
+        width: 525px;
+        height: 545px
+    }
+
+    [name=text] {
+        width: 445px;
+    }
+
+    .txt-acts {
+        width: 445px;
+    }
+
+    .txt-acts .txt-impact {
+        width: 238px;
+        height: 55px;
+    }
+
+    .stickers-container {
+        width: 445px;
+        margin-bottom: 25px;
+    }
+
+    .bottom-btns {
+        display: inline;
+    }
+
+    .bottom-btns .share {
+        margin-bottom: 0px;
+        margin-inline-end: 15px;
     }
 }

@@ -6,6 +6,9 @@
     background-repeat: no-repeat;
     background-position: -116px -93px;
     height: 680px;
+    max-width: 630px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .meme-container .canvas-container {
@@ -17,13 +20,15 @@
 .canvas-container #my-canvas {
     border-radius: 15px;
     box-shadow: 0 0px 11px 2px var(--clr3);
+    width: 400px;
+    height: 500px;
 }
 
 .meme-container .user-acts {
     /* flex-basis: 50%; */
     border-radius: 30px;
-    width: 525px;
-    height: 545px;
+    width: 400px;
+    height: 500px;
     align-items: center;
     background-color: #383b42a5;
 }
@@ -33,7 +38,7 @@
     margin-inline-start: 40px;
     margin-inline-end: 40px;
     margin-bottom: 20px;
-    width: 445px;
+    width: 380px;
     height: 55px;
     border-radius: 28px;
     background-color: #ebeef3;
@@ -124,7 +129,7 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    width: 445px;
+    width: 390px;
     height: 150px;
     border: none;
     border-radius: 15px;
@@ -144,7 +149,7 @@
     grid-column: 1 span;
 }
 
-.txt-acts>button:hover{
+.txt-acts>button:hover {
     background-color: rgb(209, 201, 201);
 }
 
@@ -162,8 +167,8 @@
 }
 
 .txt-acts .txt-impact {
-    width: 238px;
-    height: 55px;
+    width: 210px;
+    height: 45px;
     box-shadow: 1px 5px 0 rgba(92, 92, 92, 0.55), inset 0 5px 0 rgba(255, 255, 255, 0.58);
     border-radius: 10px;
     background-color: #ffffff;
@@ -196,16 +201,21 @@
 }
 
 .stickers-container {
-    width: 445px;
+    width: 380px;
     height: 90px;
     border-radius: 45px;
     background-color: #ffffff;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
-.bottom-btns *{
+.bottom-btns {
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom-btns * {
     border: none;
-    font-family:  pop-mid;
+    font-family: pop-mid;
     color: #ffffff;
     font-size: 1.2em;
 }
@@ -216,15 +226,16 @@
     box-shadow: 1px 6px 0 #165c9c, inset 0 5px 0 #ffffff;
     border-radius: 15px;
     background-color: #1e7cd3;
-    margin-inline-end: 15px;
+    margin-bottom: 10px;
+    /* margin-inline-end: 15px; */
     text-align: center;
 }
 
-.bottom-btns .share:hover{
+.bottom-btns .share:hover {
     background-color: #14538e
 }
 
-.bottom-btns .share img{
+.bottom-btns .share img {
     width: 25px;
     height: 25px;
     margin-inline-end: 25px;
@@ -239,11 +250,11 @@
     background-color: #8f44bb;
 }
 
-.bottom-btns .download:hover{
+.bottom-btns .download:hover {
     background-color: #652f84;
 }
 
-.bottom-btns .download img{
+.bottom-btns .download img {
     width: 25px;
     height: 25px;
     margin-inline-end: 25px;

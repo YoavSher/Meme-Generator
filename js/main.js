@@ -6,3 +6,7 @@ function init(){
     renderGallery()
     memeInit()
 }
+
+function onToggleMenu(){
+    document.body.classList.toggle('menu-open')
+}

@@ -10,15 +10,17 @@
 </head>
 
 <body class="main-layout" onload="init()">
+    <div class="main-screen full main-layout" onclick="onToggleMenu()"></div>
     <header class="main-header-con flex space-between align-center full">
         <div class="logo">logo</div>
         <nav class="main-nav">
             <ul class="main-nav-list flex align-center clean-list">
-                <li onclick="onShowGallery()">Gallery</a></li>
+                <li onclick="onShowGallery()"><a href="">Gallery</a></li>
                 <li><a href="">Memes</a></li>
                 <li><a href="">About</a></li>
             </ul>
         </nav>
+        <button class="menu-btn" onclick="onToggleMenu()"><img src="/svg/Forme 1.svg" alt=""></button>
     </header>
 
     <main class="main-section">
