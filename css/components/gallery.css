@@ -1,0 +1,14 @@
+.gallery {
+    background-color: var(--clr2);
+    grid-template-columns: repeat(2, minmax(150px,290px));
+    gap: 20px;
+    place-content: center;
+    max-width: 100%;
+}
+
+.gallery>* {
+    border-radius: 10px;
+    /* width: 200px; */
+    max-height: 315px;
+    min-width: 0px;
+}

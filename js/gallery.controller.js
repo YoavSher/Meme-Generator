@@ -7,21 +7,20 @@ function renderGallery() {
         <img onclick="onImgSelect(this)" src="meme-imgs(square)/${i}.jpg" alt="">
         `
     }
-    const elGallery = document.querySelector('.gallery-container')
+    const elGallery = document.querySelector('.gallery')
     elGallery.innerHTML = strHtml
 }
 
 
 function onImgSelect(elImg) {
-    // console.log('elImg:', elImg.src)
-    document.querySelector('.gallery-container').classList.remove('grid')
-    document.querySelector('.gallery-container').classList.add('hide')
-    document.querySelector('.canvas-container').classList.remove('hide')
+
+    document.querySelector('.main-gallery-container').classList.add('hide')
+    document.querySelector('.meme-container').classList.remove('hide')
+    document.querySelector('.meme-container').classList.add('flex')
     setImg(elImg.src)
 }
 
-function onShowGallery(){
-    document.querySelector('.gallery-container').classList.add('grid')
-    document.querySelector('.gallery-container').classList.remove('hide')
-    document.querySelector('.canvas-container').classList.add('hide')
+function onShowGallery() {
+    document.querySelector('.main-gallery-container').classList.remove('hide')
+    document.querySelector('.meme-container').classList.add('hide')
 }

@@ -10,11 +10,11 @@
 </head>
 
 <body class="main-layout" onload="init()">
-    <header class="main-header-con flex space-between align-center">
+    <header class="main-header-con flex space-between align-center full">
         <div class="logo">logo</div>
         <nav class="main-nav">
             <ul class="main-nav-list flex align-center clean-list">
-                <li onclick="onShowGallery()"><a href="">Gallery</a></li>
+                <li onclick="onShowGallery()">Gallery</a></li>
                 <li><a href="">Memes</a></li>
                 <li><a href="">About</a></li>
             </ul>
@@ -22,35 +22,58 @@
     </header>
 
     <main class="main-section">
-        <section class="top-main flex space-between align-center">
-        <form class="search-form">
-            <input type="search" id="search-bar" name="search-bar" placeholder="Search">
-            <button class="fa search-btn"> </button>
-        </form>
-        <div class="key-words-container">
-        <button class="more-btn">More</button>
-    </div>
-    </section>
-    <div class="main-gallery-con">
-        <section class="gallery-container grid">
+        <div class="main-gallery-container">
+            <section class="top-main flex space-between align-center">
+                <form class="search-form">
+                    <input type="search" id="search-bar" name="search-bar" placeholder="Search">
+                    <button class="fa search-btn"> </button>
+                </form>
+                <div class="key-words-container">
+                    <button class="more-btn">More</button>
+                </div>
+            </section>
+            <div class="gallery-container">
+                <section class="gallery grid">
 
-        </section>
-    </div>
-        <div class="canvas-container hide">
-            <div class="user-acts">
+                </section>
+            </div>
+        </div>
+        <div class="meme-container hide">
+            <div class="user-acts flex flex-direction ">
                 <!-- <label for="fname">First name:</label> -->
                 <input oninput="setLineTxt(this)" type="text" id="text" name="text" placeholder="Enter your text here">
-                <label for="txtColor">Select shape color:</label>
-                <input oninput="onSetColor(this)" type="color" id="txtColor" name="txtColor" value="#000" />
-                <div class="font-btn">
-                    <button onclick="onIncreaseFontSize()">A+</button>
-                    <button onclick="onDecreaseFontSize()">A-</button>
+                <div class="line-actions-btns flex">
+                    <button class="switch-line" onclick="onSwitchLine()">
+                        <img src="/svg/arrow-up.svg" alt="">
+                        <img src="/svg/arrow-down.svg" alt="">
+                    </button>
+                    <button class="fa add-line"><img src="/svg/plus.svg" alt=""></button>
+                    <button class="fa remove-line"><img src="/svg/recycle-bin.svg" alt=""></button>
                 </div>
-                <!-- <button class="add-line" onclick="onAddLine()">+</button> -->
-                <button class="switch-line" onclick="onSwitchLine()">⇅</button>
+                <div class="txt-acts">
+
+                    <button class="inc-font" onclick="onIncreaseFontSize()"><img src="/svg/A+.svg" alt=""></button>
+                    <button class="dec-font" onclick="onDecreaseFontSize()"><img src="/svg/A-.svg" alt=""></button>
+                    <button class="txt-start"><img src="/svg/Rectangle_4_copie_3.svg" alt=""></button>
+                    <button class="txt-center"><img src="/svg/Rectangle_4_copie_4.svg" alt=""></button>
+                    <button class="txt-end"><img src="/svg/Rectangle_4_copie_5.svg" alt=""></button>
+                    <button class="txt-impact">impact</button>
+                    <button class="txt-s"><img src="/svg/s.svg" alt=""></button>
+
+                    <input oninput="onSetColor(this)" type="color" id="txtColor" name="txtColor" value="#000" />
+                </div>
+                <div class="stickers-container">
+
+                </div>
+                <div class="bottom-btns">
+                    <button class="share"><img src="/svg/Forme 7.svg" alt="">Share</button>
+                    <button class="download"><img src="/svg/Forme 8.svg" alt=""> Download</button>
+                </div>
             </div>
-            <h3>Container</h3>
-            <canvas id="my-canvas" height="450" width="450"></canvas>
+            <div class="canvas-container ">
+
+                <canvas id="my-canvas" height="546" width="476"></canvas>
+            </div>
         </div>
     </main>
     <!-- <footer class="main-footer">© 2022 Meme Gen - All Rights Reserved to Yoav Sher</footer> -->

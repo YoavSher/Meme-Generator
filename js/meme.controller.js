@@ -42,7 +42,7 @@ function drawText(txt, x, y, baseLine, color, size) {
     gCtx.textBaseline = baseLine
     gCtx.textAlign = 'center'
     gCtx.lineWidth = 1
-    gCtx.font = `${size}px david`
+    gCtx.font = `${size}px pop-extra-bold`
     gCtx.fillStyle = color
     gCtx.fillText(txt, x, y)
     gCtx.strokeStyle = 'black'

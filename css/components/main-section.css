@@ -1,25 +1,36 @@
 .main-section *:not(.fa) {
     font-family: pop-light;
+    position: relative;
 }
 
-.main-section {
+.main-gallery-container{
     background-color: var(--clr2);
     border: 1px solid var(--clr2);
     border-radius: 8px;
-    height: 560px;
+    height: 100vh;
+    max-width: 630px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
+.main-gallery-container .top-main{
+    flex-direction: column;
+    margin-bottom: 45px;
+   
 }
 
 .search-form {
     font-size: 1.25rem;
     position: relative;
-    margin-bottom: 45px;
+    margin-bottom:20px;
+    
 }
 
 [name=search-bar] {
-    width: 27em;
+    min-width: 27em;
     height: 3em;
     background-color: var(--clr3);
+    color: #ffffff;
     border-radius: 2.5em;
     border: none;
     appearance: none;
@@ -65,27 +76,9 @@
     border: none;
     background-image: linear-gradient(-86deg, #33be6d 0%, #0c98b9 100%);
     font-size: 1.1em;
+    cursor: pointer;
 }
 
-.main-gallery-con {
-    height: 428px;
-    overflow-y: scroll;
-}
-
-::-webkit-scrollbar {
-    width: 13px;
-    height: 430px;
-}
-
-::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey;
-    border-radius: 7px;
-}
-
-::-webkit-scrollbar-thumb {
-    width: 15px;
-    height: 57px;
-    border-radius: 7px;
-    background-color: #22252c;
-    background-image: linear-gradient(-86deg, #33be6d 0%, #0c98b9 100%);
+.gallery-container {
+    height: 100vh;
 }

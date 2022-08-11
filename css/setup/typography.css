@@ -11,3 +11,12 @@
     font-family: pop-light;
     src:url(/fonts/poppins/Poppins-Light.ttf)
 }
+@font-face{
+    font-family: pop-extra-bold;
+    src:url(/fonts/poppins/Poppins-ExtraBold.ttf)
+}
+
+@font-face{
+    font-family: pop-semi-bold;
+    src: url(/fonts/poppins/Poppins-SemiBold.ttf);
+}

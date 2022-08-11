@@ -1,0 +1,91 @@
+@media(min-width:900px) {
+    /* .main-layout {
+        max-width: var(--wide);
+    } */
+
+    .main-header-con {
+        border: 1px solid var(--clr1);
+        border-radius: 2.5em;
+    }
+
+    .main-header-con .main-nav-list li {
+        padding-inline-end: 40px;
+        cursor: pointer;
+        /* padding-right: 10px; */
+    }
+
+    .main-nav-list li * {
+        color: #fefefe;
+    }
+
+    .main-header-con .main-nav-list:last-child {
+        padding-inline-end: 200px;
+    }
+
+    .main-section {
+        width: 100%;
+    }
+
+    .main-gallery-container {
+        background-color: var(--clr2);
+        border: 1px solid var(--clr2);
+        border-radius: 8px;
+        height: 560px;
+        max-width: 1245px;
+    }
+
+    .main-gallery-container .top-main {
+        flex-direction: row;
+    }
+
+    .search-form {
+        margin-bottom: 0px;
+    }
+
+    .gallery {
+
+        grid-template-columns: repeat(5, 200px);
+        gap: 20px;
+        place-content: center;
+        max-width: 100%;
+    }
+
+    .gallery>* {
+        border-radius: 10px;
+        width: 200px;
+        height: 175px;
+        min-width: 0px;
+    }
+
+    .gallery-container {
+        height: 428px;
+        overflow-y: scroll;
+    }
+
+    ::-webkit-scrollbar {
+        width: 13px;
+        height: 430px;
+    }
+
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 7px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        width: 15px;
+        height: 57px;
+        border-radius: 7px;
+        background-color: #22252c;
+        background-image: linear-gradient(-86deg, #33be6d 0%, #0c98b9 100%);
+    }
+    .meme-container {
+        justify-content: space-between;
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+    .meme-container .user-acts {
+        /* flex-basis: 50%; */
+        margin-inline-end: 95px;
+    }
+}
