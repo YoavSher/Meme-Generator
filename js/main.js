@@ -2,6 +2,7 @@
 
 
 function init(){
-    console.log('yooooo');
+    // console.log('yooooo');
+    renderGallery()
     memeInit()
 }

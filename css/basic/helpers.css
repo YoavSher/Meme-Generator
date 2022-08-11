@@ -1,4 +1,4 @@
-.flex{
+.flex {
     display: flex;
 }
 
@@ -22,4 +22,16 @@
     margin: 0;
     padding: 0;
     list-style-type: none;
+}
+
+.fa {
+    font-family: fa;
+}
+
+.hide {
+    display: none;
+}
+
+.grid{
+    display: grid;
 }

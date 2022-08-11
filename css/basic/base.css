@@ -2,6 +2,11 @@
     box-sizing: border-box;
 }
 
+body{
+    background-color: var(--clr3);
+    color: #fefefe;
+}
+
 img{
     width: 100%;
     cursor: pointer;

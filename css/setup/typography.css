@@ -1,0 +1,13 @@
+@font-face {
+    font-family: fa;
+    src: url(/fonts/webfonts/fa-solid-900.ttf)
+}
+
+@font-face{
+    font-family: pop-mid;
+    src:url(/fonts/poppins/Poppins-Medium.ttf)
+}
+@font-face{
+    font-family: pop-light;
+    src:url(/fonts/poppins/Poppins-Light.ttf)
+}
