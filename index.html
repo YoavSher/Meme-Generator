@@ -12,27 +12,40 @@
 <body class="main-layout" onload="init()">
     <div class="main-screen full main-layout" onclick="onToggleMenu()"></div>
     <header class="main-header-con flex space-between align-center full">
-        <div class="logo">logo</div>
+        <div class="logo">MemeGen</div>
         <nav class="main-nav">
             <ul class="main-nav-list flex align-center clean-list">
                 <li onclick="onShowGallery()"><a href="">Gallery</a></li>
-                <li><a href="">Memes</a></li>
+                <li><a href="meme.html">Memes</a></li>
                 <li><a href="">About</a></li>
             </ul>
         </nav>
-        <button class="menu-btn" onclick="onToggleMenu()"><img src="/svg/Forme 1.svg" alt=""></button>
+        <button class="menu-btn" onclick="onToggleMenu()"><img src="svg/Forme 1.svg" alt=""></button>
     </header>
 
     <main class="main-section">
         <div class="main-gallery-container">
             <section class="top-main flex space-between align-center">
                 <form class="search-form">
-                    <input type="search" id="search-bar" name="search-bar" placeholder="Search">
-                    <button class="fa search-btn"> </button>
+                    <input list="search" id="search-bar" name="search-bar" placeholder="Search">
+                    <datalist id="search">
+                        <option value="movies">
+                        <option value="babies">
+                        <option value="politicians">
+                        <option value="animals">
+                        <option value="smile">
+                    </datalist>
+                    <!-- <button class="fa search-btn"> </button> -->
                 </form>
                 <div class="key-words-container">
-                    <button class="more-btn">More</button>
+                    <p>
+                        <span class="funny" onclick="onIncreaseSize(this)">Funny</span>
+                        <span class="animals" onclick="onIncreaseSize(this)">Animals</span>
+                        <span class="smile" onclick="onIncreaseSize(this)">Smile</span>
+                        <span class="babies" onclick="onIncreaseSize(this)">Babies</span>
+                    </p>
                 </div>
+                <button class="more-btn">More</button>
             </section>
             <div class="gallery-container">
                 <section class="gallery grid">
@@ -46,30 +59,41 @@
                 <input oninput="setLineTxt(this)" type="text" id="text" name="text" placeholder="Enter your text here">
                 <div class="line-actions-btns flex">
                     <button class="switch-line" onclick="onSwitchLine()">
-                        <img src="/svg/arrow-up.svg" alt="">
-                        <img src="/svg/arrow-down.svg" alt="">
+                        <img src="svg/arrow-up.svg" alt="">
+                        <img src="svg/arrow-down.svg" alt="">
                     </button>
-                    <button class="fa add-line"><img src="/svg/plus.svg" alt=""></button>
-                    <button class="fa remove-line"><img src="/svg/recycle-bin.svg" alt=""></button>
+                    <button class="fa add-line"><img src="svg/plus.svg" alt=""></button>
+                    <button class="fa remove-line"><img src="svg/recycle-bin.svg" alt=""></button>
                 </div>
                 <div class="txt-acts">
 
-                    <button class="inc-font" onclick="onIncreaseFontSize()"><img src="/svg/A+.svg" alt=""></button>
-                    <button class="dec-font" onclick="onDecreaseFontSize()"><img src="/svg/A-.svg" alt=""></button>
-                    <button class="txt-start"><img src="/svg/Rectangle_4_copie_3.svg" alt=""></button>
-                    <button class="txt-center"><img src="/svg/Rectangle_4_copie_4.svg" alt=""></button>
-                    <button class="txt-end"><img src="/svg/Rectangle_4_copie_5.svg" alt=""></button>
+                    <button class="inc-font" onclick="onIncreaseFontSize()"><img src="svg/A+.svg" alt=""></button>
+                    <button class="dec-font" onclick="onDecreaseFontSize()"><img src="svg/A-.svg" alt=""></button>
+                    <button class="txt-start" onclick="onAlignTxtLeft()"><img src="svg/Rectangle_4_copie_3.svg"
+                            alt=""></button>
+                    <button class="txt-center" onclick="onAlignTxtCenter()"><img src="svg/Rectangle_4_copie_4.svg"
+                            alt=""></button>
+                    <button class="txt-end" onclick="onAlignTxtRight()"><img src="svg/Rectangle_4_copie_5.svg"
+                            alt=""></button>
                     <button class="txt-impact">impact</button>
-                    <button class="txt-s"><img src="/svg/s.svg" alt=""></button>
+                    <button class="txt-s" onclick="onSaveMeme()"><img src="svg/s.svg" alt=""></button>
 
                     <input oninput="onSetColor(this)" type="color" id="txtColor" name="txtColor" value="#000" />
                 </div>
                 <div class="stickers-container">
-
+                    <img onclick="onDrawSticker(this,src)" src="svg/emoji off.svg" alt="">
+                    <img onclick="onDrawSticker(this,src)" src="svg/Emoji on.svg" alt="">
+                    <img onclick="onDrawSticker(this,src)" src="svg/Calque 7.svg" alt="">
+                    <img onclick="onDrawSticker(this,src)" src="svg/Calque 8.svg" alt="">
                 </div>
                 <div class="bottom-btns">
-                    <button class="share"><img src="/svg/Forme 7.svg" alt="">Share</button>
-                    <button class="download"><img src="/svg/Forme 8.svg" alt=""> Download</button>
+                    <button class="share" onclick="onShareMeme()">
+                        <img src="svg/Forme 7.svg" alt=""><a href=""> Share</a></button>
+                    <button class="download">
+                        <img src="svg/Forme 8.svg" alt="">
+                        <a href="#" onclick="onDownloadCanvas(this)">Download</a>
+                    </button>
+
                 </div>
             </div>
             <div class="canvas-container ">
@@ -79,6 +103,7 @@
         </div>
     </main>
     <!-- <footer class="main-footer">© 2022 Meme Gen - All Rights Reserved to Yoav Sher</footer> -->
+    <script src="js/services/storage.service.js"></script>
     <script src="js/services/service.utils.js"></script>
     <script src="js/services/meme.service.js"></script>
     <script src="js/gallery.controller.js"></script>

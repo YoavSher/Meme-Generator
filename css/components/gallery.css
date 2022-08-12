@@ -12,3 +12,7 @@
     max-height: 315px;
     min-width: 0px;
 }
+
+.gallery img:hover{
+    box-shadow: 1px 0px 9px 4px black;;
+}

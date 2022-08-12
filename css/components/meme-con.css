@@ -2,7 +2,7 @@
     justify-content: start;
     flex-direction: column-reverse;
     align-items: center;
-    background-image: url(/img/Forme_1.png);
+    background-image: url(../../img/Forme_1.png);
     background-repeat: no-repeat;
     background-position: -116px -93px;
     height: 680px;
@@ -21,7 +21,7 @@
     border-radius: 15px;
     box-shadow: 0 0px 11px 2px var(--clr3);
     width: 400px;
-    height: 500px;
+    height: 450px;
 }
 
 .meme-container .user-acts {
@@ -201,11 +201,20 @@
 }
 
 .stickers-container {
+    display: flex;
+    justify-content: space-around;
     width: 380px;
     height: 90px;
     border-radius: 45px;
     background-color: #ffffff;
     margin-bottom: 15px;
+}
+
+.stickers-container img{
+    margin-top: 10px;
+    width: 65px;
+    height: 65px;
+    margin-bottom: 10px;
 }
 
 .bottom-btns {

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saved Meme</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body onload="renderSavedMemes()" class="main-layout">
+    <div class="main-screen full main-layout" onclick="onToggleMenu()"></div>
+    <header class="main-header-con flex space-between align-center full">
+        <div class="logo">MemeGen</div>
+        <nav class="main-nav">
+            <ul class="main-nav-list flex align-center clean-list">
+                <li><a href="index.html">Gallery</a></li>
+                <li><a href="">Memes</a></li>
+                <li><a href="">About</a></li>
+            </ul>
+        </nav>
+        <button class="menu-btn" onclick="onToggleMenu()"><img src="svg/Forme 1.svg" alt=""></button>
+    </header>
+    <main class="main-gallery-container">
+        <div class="canvas-container saved-memes">
+
+            
+        </div>
+    </main>
+    <script src="js/services/storage.service.js"></script>
+    <script src="js/services/service.utils.js"></script>
+    <script src="js/services/meme.service.js"></script>
+    <script src="js/gallery.controller.js"></script>
+    <script src="js/meme.controller.js"></script>
+    <script src="js/memes.gallery.js"></script>
+</body>
+
+</html>

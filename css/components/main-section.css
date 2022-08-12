@@ -3,7 +3,7 @@
     position: relative;
 }
 
-.main-gallery-container{
+.main-gallery-container {
     background-color: var(--clr2);
     border: 1px solid var(--clr2);
     border-radius: 8px;
@@ -13,17 +13,40 @@
     margin-right: auto;
 }
 
-.main-gallery-container .top-main{
+.main-gallery-container .top-main {
     flex-direction: column;
     margin-bottom: 45px;
-   
+
+}
+
+.top-main .key-words-container {
+    margin-bottom: 20px;
+    width: 535px;
+    height: 55px;
+    border-radius: 30px;
+    background-color: rgba(254, 254, 254, 0.596);
+}
+
+
+
+.key-words-container .funny{
+    font-size: 2em;
+}
+.key-words-container .animals{
+    font-size: 1.5em;
+}
+.key-words-container .smile{
+    font-size: 3em;
+}
+.key-words-container .babies{
+    font-size: 1.8em;
 }
 
 .search-form {
     font-size: 1.25rem;
     position: relative;
-    margin-bottom:20px;
-    
+    margin-bottom: 20px;
+
 }
 
 [name=search-bar] {
@@ -65,7 +88,7 @@
     content: '\f002';
 }
 
-.key-words-container .more-btn {
+ .more-btn {
     width: 92px;
     height: 36px;
     margin-inline-end: 13px;

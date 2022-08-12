@@ -41,13 +41,6 @@
 }
 
 
-
-
-
-
-
-
-
 @media(min-width:900px) {
     /* .main-layout {
         max-width: var(--wide);
@@ -86,6 +79,17 @@
 
     .main-gallery-container .top-main {
         flex-direction: row;
+    }
+
+    .top-main .key-words-container {
+        position: absolute;
+        top: 26px;
+        left: 590px;
+    }
+    .key-words-container span{
+        position: relative;
+        top: -26px;
+        left: 48px;
     }
 
     .search-form {
