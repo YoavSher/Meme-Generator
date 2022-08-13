@@ -22,6 +22,7 @@
     box-shadow: 0 0px 11px 2px var(--clr3);
     width: 400px;
     height: 450px;
+    cursor: grab;
 }
 
 .meme-container .user-acts {

@@ -2,35 +2,102 @@
 
 let gElCanvas
 let gCtx
+let gStartPos
+const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 
 function memeInit() {
     gElCanvas = document.getElementById('my-canvas')
     gCtx = gElCanvas.getContext('2d')
+    addListeners()
+    gCurrLine = 0
     // renderMeme()
 }
 
-function renderMeme() {
+function renderMeme(img) {
 
+    if (!img) {
+        const img = new Image()
+        img.src = gImgs[0].url
+        img.onload = () => {
+            gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+            const meme = getMeme()
+            // let currLine = getCurrLine()
+            meme.lines.map(line => {
 
-    const img = new Image()
-    img.src = gImgs[0].url
-    img.onload = () => {
-        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-        const meme = getMeme()
-        // let currLine = getCurrLine()
-        meme.lines.map(line => {
-
-            const { txt, baseLine, color, size, align } = line
-            const location = txtLocation(gCurrLine)
-            drawText(txt, gElCanvas.width / 2, location, baseLine, color, size, align)
-            // document.querySelector('[name=text]').value = line.txt
-            gCurrLine++
-            // console.log('gCurrLine:', currLine)
-            console.log('line:', line)
-            // console.log('height:', height)
-        })
-        gCurrLine = 0
+                const { txt, baseLine, color, size, align,pos } = line
+                // const location = txtLocation(gCurrLine)
+                // drawText(txt, gElCanvas.width / 2, location, baseLine, color, size, align)
+                drawText(txt, pos.x, pos.y, baseLine, color, size, align)
+                // document.querySelector('[name=text]').value = line.txt
+                // gCurrLine++
+                // console.log('gCurrLine:', currLine)
+                // console.log('line:', line)
+                // console.log('height:', height)
+            })
+            // gCurrLine = 0
+        }
     }
+}
+
+function addListeners() {
+    addMouseListeners()
+    addTouchListeners()
+}
+
+function addMouseListeners() {
+    gElCanvas.addEventListener('mousemove', onMove)
+    gElCanvas.addEventListener('mousedown', onDown)
+    gElCanvas.addEventListener('mouseup', onUp)
+}
+
+function addTouchListeners() {
+    gElCanvas.addEventListener('touchmove', onMove)
+    gElCanvas.addEventListener('touchstart', onDown)
+    gElCanvas.addEventListener('touchend', onUp)
+}
+
+function onDown(ev) {
+    // Getting the clicked position
+    const pos = getEvPos(ev)
+    // { x: 15, y : 15 }
+    if (!isLineClicked(pos)) return
+    setLineDrag(true)
+    gStartPos = pos
+    document.querySelector('#my-canvas').style.cursor = 'grabbing'
+}
+
+function onMove(ev) {
+    const meme = getMeme()
+    const line = meme.lines[meme.selectedLineIdx]
+    if (!line.isDrag) return
+    const pos = getEvPos(ev)
+    const dx = pos.x - gStartPos.x
+    const dy = pos.y - gStartPos.y
+    moveLine(dx, dy)
+    gStartPos = pos
+    renderMeme()
+}
+
+function onUp() {
+    setLineDrag(false)
+    document.querySelector('#my-canvas').style.cursor = 'grab'
+}
+
+function getEvPos(ev) {
+    var pos = {
+        x: ev.offsetX,
+        y: ev.offsetY
+    }
+    // const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
+    if (gTouchEvs.includes(ev.type)) {
+        ev.preventDefault()
+        ev = ev.changedTouches[0]
+        pos = {
+            x: ev.pageX - ev.target.offsetLeft,
+            y: ev.pageY - ev.target.offsetTop
+        }
+    }
+    return pos
 }
 
 function drawText(txt, x, y, baseLine, color, size, align) {
@@ -97,16 +164,17 @@ function onAlignTxtRight() {
 }
 function onAddLine() {
     addLine()
-    const meme = getMeme()
-    // const currLine = getCurrLine()
-    const lineIdx = meme.selectedLineIdx
-    const line = meme.lines[lineIdx]
-    const height = txtLocation()
-    const { txt, baseLine, color, size } = line
-    drawText(txt, gElCanvas.width / 2, height, baseLine, color, size)
-    document.querySelector('[name=text]').value = line.txt
-    console.log('height:', height)
-    // renderMeme()
+    // const meme = getMeme()
+    // // const currLine = getCurrLine()
+    // const lineIdx = meme.selectedLineIdx
+    // const line = meme.lines[lineIdx]
+    // const height = txtLocation()
+    // const { txt, baseLine, color, size } = line
+    // drawText(txt, gElCanvas.width / 2, height, baseLine, color, size)
+    // document.querySelector('[name=text]').value = line.txt
+    // console.log('height:', height)
+    onSwitchLine()
+    renderMeme()
 }
 
 function onSwitchLine() {
@@ -117,7 +185,7 @@ function onSwitchLine() {
     // console.log('lineIdx:', lineIdx)
     const line = meme.lines[lineIdx]
     const txt = line.txt
-    console.log('txt:', txt)
+    // console.log('txt:', txt)
     // const { txt, baseLine, color, size } = line
     // drawText(txt, gElCanvas.width / 2, gElCanvas.height - 10, baseLine, color, size)
     document.querySelector('[name=text]').value = txt
@@ -164,6 +232,24 @@ function onDownloadCanvas(elLink) {
 //         })
 // }
 
+function onUploadImg(ev) {
+    loadImageFromInput(ev, renderMeme)
+}
+
+function loadImageFromInput(ev, onImageReady) {
+    document.querySelector('.share-container').innerHTML = ''
+
+    let reader = new FileReader()
+
+    reader.onload = (event) => {
+        let img = new Image()
+        img.src = event.target.result
+        img.onload = onImageReady.bind(null, img)
+        onImgSelect(img)
+    }
+    reader.readAsDataURL(ev.target.files[0])
+}
+
 function onSaveMeme() {
     saveMeme()
     // renderMemes()
@@ -171,12 +257,12 @@ function onSaveMeme() {
     // console.log('elMemes:', elMemes)
 }
 
-function onDrawSticker(elSticker,src) {
+function onDrawSticker(elSticker, src) {
     const img = new Image();
     img.src = src;
     img.onload = () => {
-       
-        gCtx.drawImage(img,190, 190,);
+
+        gCtx.drawImage(img, 190, 190,);
     };
     // console.log('elSticker:', elSticker)
     // console.log('src:', src)

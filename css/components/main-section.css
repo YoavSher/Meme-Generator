@@ -20,11 +20,13 @@
 }
 
 .top-main .key-words-container {
+    display: grid;
     margin-bottom: 20px;
     width: 535px;
     height: 55px;
     border-radius: 30px;
     background-color: rgba(254, 254, 254, 0.596);
+    place-content: center;
 }
 
 

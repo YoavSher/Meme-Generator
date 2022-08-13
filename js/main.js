@@ -3,8 +3,8 @@
 
 function init(){
     // console.log('yooooo');
-    renderGallery()
     memeInit()
+    renderGallery()
 }
 
 function onToggleMenu(){

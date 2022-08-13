@@ -1,8 +1,8 @@
 'use strict'
 
 function renderGallery() {
-
-    const strHtml = gImgs.map(img =>
+    const imgs = getImgsForDisplay()
+    const strHtml = imgs.map(img =>
         ` <img onclick="onImgSelect(this)" src="${img.url}" alt="">`
     ).join('')
     const elGallery = document.querySelector('.gallery')
@@ -27,4 +27,11 @@ function onIncreaseSize(elWord) {
     const word = elWord
     word.style.fontSize = 'xx-large'
     // console.log('word:', word)
+}
+
+function onSetSortBy() {
+    const prop = document.querySelector('[name=search-bar]').value
+    setGallerySort(prop)
+    renderGallery()
+    // console.log('prop:', prop)
 }

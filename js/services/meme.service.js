@@ -4,16 +4,6 @@ const gMemes = []
 
 let gMemeUrl
 let gCurrLine = 0
-let gImgId = 1
-let gImgs
-// const gImgs = [
-//     {
-//         id: 1,
-//         url: '',
-//         keywords: ['funny', 'cat']
-//     }
-// ]
-_createImgs()
 
 const gMeme = {
 
@@ -25,15 +15,25 @@ const gMeme = {
             size: 40,
             baseLine: 'top',
             color: 'white',
-            align: 'center'
+            align: 'center',
+            isDrag: false,
+            pos: {
+                x: 240,
+                y: 10
+            }
         },
-        {
-            txt: 'Sometimes i dont',
-            size: 40,
-            baseLine: 'bottom',
-            color: 'white',
-            align: 'center'
-        }
+        // {
+        //     txt: 'Sometimes i dont',
+        //     size: 40,
+        //     baseLine: 'bottom',
+        //     color: 'white',
+        //     align: 'center',
+        //     isDrag: false,
+        //     pos: {
+        //         x: 240,
+        //         y: 540
+        //     }
+        // }
     ]
 }
 
@@ -54,20 +54,17 @@ function setImg(src) {
     )
     document.querySelector('[name=text]').value = ''
     meme.selectedLineIdx = 0
+    // gCurrLine = 0
     renderMeme()
 }
 
-function getImgId(imgId) {
-    const img = gImgs.find(img => imgId === img.id)
-    // gId = img.id
-    return img
-}
+
 
 function addLine() {
     gCurrLine++
     const line = _createLine()
     gMeme.lines.push(line)
-
+console.log('gCurrLine:', gCurrLine)
 }
 
 function getCurrLine() {
@@ -75,30 +72,30 @@ function getCurrLine() {
     return gCurrLine
 }
 
-function txtLocation(currLine = gCurrLine) {
-    let height
-    // console.log('currLine:', currLine)
-    switch (currLine) {
+// function txtLocation(currLine = gCurrLine) {
+//     let height
+//     // console.log('currLine:', currLine)
+//     switch (currLine) {
 
-        case 0:
-            height = 10
-            break
-        case 1:
-            height = gElCanvas.height - 30
-            break
-        default:
-            height = gElCanvas.height / 2
-            break
-    }
-    return height
-}
+//         case 0:
+//             height = 10
+//             break
+//         case 1:
+//             height = gElCanvas.height - 30
+//             break
+//         default:
+//             height = gElCanvas.height / 2
+//             break
+//     }
+//     return height
+// }
 
 function checkResetLines() {
 
     if (gMeme.selectedLineIdx >= gMeme.lines.length - 1) {
         gMeme.selectedLineIdx = 0
     } else gMeme.selectedLineIdx++
-    console.log(' gMeme.selectedLineIdx:', gMeme.selectedLineIdx)
+    // console.log(' gMeme.selectedLineIdx:', gMeme.selectedLineIdx)
     // console.log('lineIdx:', lineIdx)
 }
 
@@ -152,50 +149,47 @@ function doUploadImg(imgDataUrl, onSuccess) {
 function _createLine() {
     if (gCurrLine === 1) {
         return {
-            txt: 'Sometimes i dont',
+            txt: 'Enter text here',
             size: 40,
             baseLine: 'bottom',
-            color: 'white'
+            color: 'white',
+            align: 'center',
+            isDrag: false,
+            pos: {
+                x: 240,
+                y: 540
+            }
         }
     }
     else {
         return {
-            txt: 'else',
+            txt: 'Enter text here',
             size: 40,
-            baseLine: 'center',
-            color: 'white'
+            baseLine: 'bottom',
+            color: 'white',
+            align: 'center',
+            isDrag: false,
+            pos: {
+                x: 240,
+                y: 300
+            }
         }
     }
 }
 
-function _createImgs() {
-    const imgs = []
-    imgs.push(_createImg('meme-imgs(square)/1.jpg', ['celebs', 'politicians', 'numbers']),)
-    imgs.push(_createImg('meme-imgs(square)/2.jpg', ['cute', 'dogs', 'animals']),)
-    imgs.push(_createImg('meme-imgs(square)/3.jpg', ['cute', 'dogs', 'babies']),)
-    imgs.push(_createImg('meme-imgs(square)/4.jpg', ['animals', 'cats', '']),)
-    imgs.push(_createImg('meme-imgs(square)/5.jpg', ['babies', 'happy']),)
-    imgs.push(_createImg('meme-imgs(square)/6.jpg', ['crazy', 'smart']),)
-    imgs.push(_createImg('meme-imgs(square)/7.jpg', ['babies', 'cute', 'surprised']),)
-    imgs.push(_createImg('meme-imgs(square)/8.jpg', ['movies', 'happy']),)
-    imgs.push(_createImg('meme-imgs(square)/9.jpg', ['babies', 'evil', 'funny']),)
-    imgs.push(_createImg('meme-imgs(square)/10.jpg', ['politicians', 'smile', 'laughing']),)
-    imgs.push(_createImg('meme-imgs(square)/11.jpg', ['sports', 'awkward']),)
-    imgs.push(_createImg('meme-imgs(square)/12.jpg', ['celebs', 'pointing', 'tv']),)
-    imgs.push(_createImg('meme-imgs(square)/13.jpg', ['movies', 'pointing', 'smile']),)
-    imgs.push(_createImg('meme-imgs(square)/14.jpg', ['movies', 'sun-glasses', 'scared']),)
-    imgs.push(_createImg('meme-imgs(square)/15.jpg', ['movies', 'talks', 'dies']),)
-    imgs.push(_createImg('meme-imgs(square)/16.jpg', ['movies', 'laughing']),)
-    imgs.push(_createImg('meme-imgs(square)/17.jpg', ['politicians', 'talks', 'numbers']),)
-    imgs.push(_createImg('meme-imgs(square)/18.jpg', ['movies', 'scared', 'smile']),)
-    gImgs = imgs
+function isLineClicked(clickedPos) {
+    // const pos = gCircle.pos
+    const { pos } = gMeme.lines[gMeme.selectedLineIdx]
+    const distance = Math.sqrt((pos.x - clickedPos.x) ** 2 + (pos.y - clickedPos.y) ** 2)
+    return distance <= gMeme.lines[gMeme.selectedLineIdx].size
 }
 
-
-function _createImg(url, keywords) {
-    return {
-        id: gImgId++,
-        url,
-        keywords
-    }
+function setLineDrag(isDrag) {
+    gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
 }
+
+function moveLine(dx, dy) {
+    gMeme.lines[gMeme.selectedLineIdx].pos.x += dx
+    gMeme.lines[gMeme.selectedLineIdx].pos.y += dy
+}
+
