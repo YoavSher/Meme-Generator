@@ -24,7 +24,7 @@ function renderMeme(img) {
             // let currLine = getCurrLine()
             meme.lines.map(line => {
 
-                const { txt, baseLine, color, size, align,pos } = line
+                const { txt, baseLine, color, size, align, pos } = line
                 // const location = txtLocation(gCurrLine)
                 // drawText(txt, gElCanvas.width / 2, location, baseLine, color, size, align)
                 drawText(txt, pos.x, pos.y, baseLine, color, size, align)
@@ -162,6 +162,7 @@ function onAlignTxtRight() {
     meme.lines[meme.selectedLineIdx].align = 'start'
     renderMeme()
 }
+
 function onAddLine() {
     addLine()
     // const meme = getMeme()
@@ -190,6 +191,17 @@ function onSwitchLine() {
     // drawText(txt, gElCanvas.width / 2, gElCanvas.height - 10, baseLine, color, size)
     document.querySelector('[name=text]').value = txt
     // resetLines(lineIdx)
+}
+
+function onRemoveLine() {
+    const meme = getMeme()
+
+    const line = meme.lines[meme.selectedLineIdx]
+    const lineIdx = meme.lines.indexOf(line)
+    // console.log('lineIdx:', lineIdx)
+    console.log('beee:', lineIdx)
+    removeLine(lineIdx)
+    renderMeme()
 }
 
 function onDownloadCanvas(elLink) {
@@ -266,4 +278,12 @@ function onDrawSticker(elSticker, src) {
     };
     // console.log('elSticker:', elSticker)
     // console.log('src:', src)
+}
+
+function onSetFlexible(){
+    document.querySelector('.main-gallery-container').classList.add('hide')
+    document.querySelector('.meme-container').classList.remove('hide')
+    document.querySelector('.meme-container').classList.add('flex')
+    
+    setRandImg()
 }

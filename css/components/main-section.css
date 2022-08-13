@@ -22,7 +22,7 @@
 .top-main .key-words-container {
     display: grid;
     margin-bottom: 20px;
-    width: 535px;
+    width: 300px;
     height: 55px;
     border-radius: 30px;
     background-color: rgba(254, 254, 254, 0.596);
@@ -91,7 +91,7 @@
 }
 
  .more-btn {
-    width: 92px;
+    width: 200px;
     height: 36px;
     margin-inline-end: 13px;
     box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.15);

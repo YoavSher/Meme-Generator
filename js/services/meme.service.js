@@ -22,25 +22,13 @@ const gMeme = {
                 y: 10
             }
         },
-        // {
-        //     txt: 'Sometimes i dont',
-        //     size: 40,
-        //     baseLine: 'bottom',
-        //     color: 'white',
-        //     align: 'center',
-        //     isDrag: false,
-        //     pos: {
-        //         x: 240,
-        //         y: 540
-        //     }
-        // }
     ]
 }
 
 
 function getMeme() {
-    const img = getImgId(gMeme.selectedImgId)
-    const meme = gMeme
+    // const img = getImgId(gMeme.selectedImgId)
+    // const meme = gMeme
     // console.log('meme:', meme)
     // return meme 
     return gMeme
@@ -64,31 +52,13 @@ function addLine() {
     gCurrLine++
     const line = _createLine()
     gMeme.lines.push(line)
-console.log('gCurrLine:', gCurrLine)
+    // console.log('gCurrLine:', gCurrLine)
 }
 
 function getCurrLine() {
 
     return gCurrLine
 }
-
-// function txtLocation(currLine = gCurrLine) {
-//     let height
-//     // console.log('currLine:', currLine)
-//     switch (currLine) {
-
-//         case 0:
-//             height = 10
-//             break
-//         case 1:
-//             height = gElCanvas.height - 30
-//             break
-//         default:
-//             height = gElCanvas.height / 2
-//             break
-//     }
-//     return height
-// }
 
 function checkResetLines() {
 
@@ -111,6 +81,14 @@ function saveMeme() {
         saveToStorage(STORAGE_KEY, memes)
     }, 1000)
 
+}
+
+function removeLine(lineIdx) {
+    gCurrLine--
+    const meme = getMeme()
+    const lines = meme.lines
+    // const selectedLine = lines.findIndex(line => lineIdx === book.id)
+    lines.splice(lineIdx, 1)
 }
 
 function uploadImg() {
@@ -161,7 +139,7 @@ function _createLine() {
             }
         }
     }
-    else {
+    else if (gCurrLine === 2) {
         return {
             txt: 'Enter text here',
             size: 40,
@@ -172,6 +150,34 @@ function _createLine() {
             pos: {
                 x: 240,
                 y: 300
+            }
+        }
+    }
+    else if (gCurrLine === 3) {
+        return {
+            txt: 'Enter text here',
+            size: 40,
+            baseLine: 'bottom',
+            color: 'white',
+            align: 'center',
+            isDrag: false,
+            pos: {
+                x: 240,
+                y: 160
+            }
+        }
+    }
+    else if (gCurrLine === 4) {
+        return {
+            txt: 'Enter text here',
+            size: 40,
+            baseLine: 'bottom',
+            color: 'white',
+            align: 'center',
+            isDrag: false,
+            pos: {
+                x: 240,
+                y: 440
             }
         }
     }
@@ -193,3 +199,33 @@ function moveLine(dx, dy) {
     gMeme.lines[gMeme.selectedLineIdx].pos.y += dy
 }
 
+
+function setRandImg() {
+   
+    gImgs[0].url = gImgs[getRandomIntInclusive(0, 17)].url
+    const meme = getMeme()
+    meme.lines.map(line => {
+        const txt = _getLineTxt()
+        line.txt = txt[getRandomIntInclusive(0, txt.length - 1)]
+    })
+    document.querySelector('[name=text]').value = ''
+    meme.selectedLineIdx = 0
+    // gCurrLine = 0
+    renderMeme()
+}
+
+function _getLineTxt() {
+    const txts = [
+        'Why The Fuck ',
+        'Not Sure If ',
+        'I’ll Have You Know',
+        'One Does Not Simply',
+        'Am I The Only One Around Here',
+        'But That’s None of My Business',
+        'You Know What Really Grinds My Gears?',
+        'And Just Like That',
+        'Everyone Loses Their Mind',
+        'What If I Told You'
+    ]
+    return txts
+}

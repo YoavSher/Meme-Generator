@@ -50,16 +50,22 @@
         border: 1px solid var(--clr1);
         border-radius: 2.5em;
     }
+    .main-header-con .main-nav-list{
+        margin-inline-start: 500px;
+    }
 
     .main-header-con .main-nav-list li {
         padding-inline-end: 40px;
         cursor: pointer;
         /* padding-right: 10px; */
     }
-
-    .main-header-con .main-nav-list:last-child {
-        padding-inline-end: 200px;
+    .main-header-con .main-nav-list{
+        align-self: flex-end;
     }
+
+    /* .main-header-con .main-nav-list:last-child {
+        padding-inline-end: 200px;
+    } */
 
     .menu-btn {
         display: none;
