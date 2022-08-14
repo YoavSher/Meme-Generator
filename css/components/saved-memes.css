@@ -1,0 +1,17 @@
+.saved-memes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 100%;
+    margin-top: 20px;
+}
+
+.saved-memes>* {
+    border-radius: 10px;
+    max-height: 315px;
+    min-width: 0px;
+}
+
+.saved-memes img:hover {
+    box-shadow: 1px 0px 9px 4px black;
+}

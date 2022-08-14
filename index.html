@@ -15,9 +15,14 @@
         <div class="logo">MemeGen</div>
         <nav class="main-nav">
             <ul class="main-nav-list flex align-center clean-list">
-                <li onclick="onShowGallery()"><a href="">Gallery</a></li>
-                <li><a href="meme.html">Memes</a></li>
-                <li><a href="">About</a></li>
+                <li onclick="onShowGallery()">Gallery</li>
+                <!-- <li><a href="meme.html">Memes</a></li> -->
+                <li onclick="initMemesGallery()">Memes</li>
+                <li onclick="onClickUploadInput()" >
+                    <input class="opacity file-input btn" type="file" name="image"
+                        onchange="onUploadImg(event)" />
+                    Upload
+                </li>
             </ul>
         </nav>
         <button class="menu-btn" onclick="onToggleMenu()"><img src="svg/Forme 1.svg" alt=""></button>
@@ -28,7 +33,7 @@
         <div class="main-gallery-container">
             <section class="top-main flex space-between align-center">
                 <form class="search-form">
-                    <input list="text" id="search-bar" name="search-bar" placeholder="Search" onkeyup="onSetSortBy()">
+                    <input list="text" id="search-bar" name="search-bar" placeholder="Search" onkeyup="onSetFilterBy()">
                     <datalist id="text">
                         <option value="movies">
                         <option value="babies">
@@ -39,13 +44,9 @@
                     <!-- <button class="fa search-btn"> </button> -->
                 </form>
                 <div class="key-words-container">
-                    <input type="file" class="file-input btn" name="image" onchange="onUploadImg(event)" />
-                    <!-- <p>
-                        <span class="funny" onclick="onIncreaseSize(this)">Funny</span>
-                        <span class="animals" onclick="onIncreaseSize(this)">Animals</span>
-                        <span class="smile" onclick="onIncreaseSize(this)">Smile</span>
-                        <span class="babies" onclick="onIncreaseSize(this)">Babies</span>
-                    </p> -->
+                   <ul class="key-words">
+
+                   </ul>
                 </div>
                 <button class="more-btn" onclick="onSetFlexible()">I'm flexible</button>
             </section>
@@ -65,7 +66,8 @@
                         <img src="svg/arrow-down.svg" alt="">
                     </button>
                     <button class="fa add-line" onclick="onAddLine()"><img src="svg/plus.svg" alt=""></button>
-                    <button class="fa remove-line" onclick="onRemoveLine()"><img src="svg/recycle-bin.svg" alt=""></button>
+                    <button class="fa remove-line" onclick="onRemoveLine()"><img src="svg/recycle-bin.svg"
+                            alt=""></button>
                 </div>
                 <div class="txt-acts">
 
@@ -77,10 +79,19 @@
                             alt=""></button>
                     <button class="txt-end" onclick="onAlignTxtRight()"><img src="svg/Rectangle_4_copie_5.svg"
                             alt=""></button>
-                    <button class="txt-impact">impact</button>
-                    <button class="txt-s" onclick="onSaveMeme()"><img src="svg/s.svg" alt=""></button>
-
-                    <input oninput="onSetColor(this)" type="color" id="txtColor" name="txtColor" value="#000" />
+                    <button class="txt-impact">
+                        <select class="font-change" onchange="onSetFont(this.value)">
+                            <option value="pop-semi-bold">Poppins</option>
+                            <option value="Ariel">Ariel</option>
+                            <option value="David">David</option>
+                        </select>
+                    </button>
+                    <button class="txt-s" onclick="onSaveMeme(this)"><img src="svg/s.svg" alt=""></button>
+                    <button class="btn-txt-color">
+                        <img onclick="onClickColorInput()" src="svg/Forme_6.svg" alt="">
+                        <input class="opacity" oninput="onSetColor(this)" type="color" id="txtColor" name="txtColor"
+                            value="#000" default="image" />
+                    </button>
                 </div>
                 <div class="stickers-container">
                     <img onclick="onDrawSticker(this,src)" src="svg/emoji off.svg" alt="">
@@ -103,12 +114,17 @@
                 <canvas id="my-canvas" height="546" width="476"></canvas>
             </div>
         </div>
+        <article class="saved-memes-container hide">
+            <div class="saved-memes"></div>
+        </article>
     </main>
+
     <!-- <footer class="main-footer">© 2022 Meme Gen - All Rights Reserved to Yoav Sher</footer> -->
     <script src="js/services/storage.service.js"></script>
     <script src="js/services/service.utils.js"></script>
     <script src="js/services/service.gallery.js"></script>
     <script src="js/services/meme.service.js"></script>
+    <script src="js/memes.gallery.js"></script>
     <script src="js/gallery.controller.js"></script>
     <script src="js/meme.controller.js"></script>
     <script src="js/main.js"></script>

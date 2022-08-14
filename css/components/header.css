@@ -9,16 +9,24 @@
 }
 
 
-.main-nav-list a {
+.main-nav-list li {
+    display: grid;
+    place-content: center;
+    text-align: center;
     color: #fefefe;
+    width: 130px;
+    height: 45px;
    
 }
 
+.main-nav-list li:last-child{
+    margin-top: -14px;
+}
 
-.main-nav-list a:hover {
+
+.main-nav-list li:hover {
     /* color: #ddd8d8; */
-    width: 130px;
-    height: 45px;
+   
     border-radius: 30px;
     background-color: #fefefe;
     color: #21AC91;
@@ -29,4 +37,8 @@
     padding-inline-start: 74px;
     text-transform: uppercase;
 
+}
+
+[name=image]{
+    display: inline;
 }

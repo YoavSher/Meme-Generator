@@ -32,6 +32,10 @@
     display: none;
 }
 
-.grid{
+.grid {
     display: grid;
+}
+
+.opacity {
+    opacity: 0;
 }
