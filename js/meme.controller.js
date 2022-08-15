@@ -53,21 +53,24 @@ function addMouseListeners() {
     gElCanvas.addEventListener('mousedown', canvasClicked)
     gElCanvas.addEventListener('mousemove', onMove)
     gElCanvas.addEventListener('mouseup', onUp)
-    gElCanvas.addEventListener('mousedown', onDownSticker)
+    // gElCanvas.addEventListener('mousedown', onDownSticker)
     gElCanvas.addEventListener('mousemove', onMoveSticker)
     gElCanvas.addEventListener('mouseup', onUpSticker)
 }
 
 function addTouchListeners() {
-    gElCanvas.addEventListener('touchstart', onDown)
+    gElCanvas.addEventListener('touchstart', canvasClicked)
     gElCanvas.addEventListener('touchmove', onMove)
     gElCanvas.addEventListener('touchend', onUp)
+    // gElCanvas.addEventListener('touchstart', canvasClicked)
+    gElCanvas.addEventListener('touchmove', onMoveSticker)
+    gElCanvas.addEventListener('touchend', onUpSticker)
 }
 
 function onDown(ev) {
     // Getting the clicked position
     const pos = getEvPos(ev)
-    // { x: 15, y : 15 }
+    console.log('ev.type:', ev)    // { x: 15, y : 15 }
     if (!isLineClicked(pos)) return
     setLineDrag(true)
     gStartPos = pos
@@ -98,6 +101,7 @@ function getEvPos(ev) {
         x: ev.offsetX,
         y: ev.offsetY
     }
+
     if (gTouchEvs.includes(ev.type)) {
         ev.preventDefault()
         ev = ev.changedTouches[0]
@@ -114,9 +118,9 @@ function canvasClicked(ev) {
     gClickedLine = null
     gClickedSticker = null
     const meme = getMeme()
-    // console.log('ev.offsetX:', ev.offsetX)
+    console.log('ev.offsetX:', ev.offsetX)
     gClickedLine = meme.lines.find(line => {
-        // console.log('line.pos.x:', line.pos.x)
+        console.log('line.pos.x:', line.pos.x)
         // console.log('line.pos.x + line.size', line.pos.x + gTxtWidth.width)
         return ev.offsetX >= line.pos.x && ev.offsetX <= line.pos.x + gTxtWidth.width &&
             ev.offsetY + line.size >= line.pos.y && ev.offsetY <= line.pos.y + 10
@@ -126,7 +130,7 @@ function canvasClicked(ev) {
         return ev.offsetX >= sticker.pos.x && ev.offsetX <= sticker.pos.x + sticker.size &&
             ev.offsetY + sticker.size >= sticker.pos.y && ev.offsetY <= sticker.pos.y + sticker.size
     })
-    // console.log('clickedLine:', gClickedLine)
+    console.log('gClickedLine:', gClickedLine)
     console.log('gClickedSticker:', gClickedSticker)
     if (gClickedLine) {
 
@@ -357,7 +361,7 @@ function onClickColorInput() {
     document.querySelector('[name=txtColor').click()
 }
 
-function onClickUploadInput(){
+function onClickUploadInput() {
     document.querySelector('.file-input.btn').click()
 }
 
